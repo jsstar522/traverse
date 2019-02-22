@@ -30,9 +30,7 @@ router.get('/:id', async (req, res) => {
 // create user
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
-  
   if (error) return res.status(400).send(error.message);
-  
   let rebody = {};
   const password = await hashPassword(req.body.password);
   rebody['password'] = password;
