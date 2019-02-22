@@ -12,13 +12,17 @@ export const userActions = {
     delete: _delete
 };
 
+// login Request
+// dispatch를 파라미터로 하는 thunk를 return
+// 컴포넌트에서는 dispatch(login(email, password))를
+// 실행하면 미들웨어가 thunk를 처리
 function login(email, password) {
   return dispatch => {
     dispatch(request(email));
 
     userService.login(email, password)
       .then(
-        user => { 
+        user => {
           dispatch(success(user));
           history.push('/');
         },
@@ -45,7 +49,7 @@ function register(user) {
 
     userService.register(user)
       .then(
-        user => { 
+        user => {
           dispatch(success(user));
           history.push('/login');
           dispatch(alertActions.success('Registration successful'));
