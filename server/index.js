@@ -12,9 +12,9 @@ const passportConfig = require('./services');
 const express = require('express');
 const app = express();
 
-/**
- * DB Connect
- */
+// /**
+//  * DB Connect
+//  */
 mongoose
   .connect(
     "mongodb://localhost/traverse_dev",
@@ -22,6 +22,7 @@ mongoose
   )
   .then(() => console.log("Connected to MongoDB"))
   .catch(error => console.error(error.message));
+
 
 /**  
  * Routes
@@ -78,7 +79,7 @@ app.use((err, req, res) => {
 if (app.get('env') === 'production') {
   // Express 가 production 어셋들을 제공한다. (main.js, main.css ...)
   app.use(express.static('client/build'));
-  
+
   // Express 가 라우트를 구분하지 못하면 index.html 을 제공한다.
   const path = require('path');
   app.get('*', (req, res) => {
