@@ -8,12 +8,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase: true 
+    lowercase: true,
+    default: 'aaa@hanmail.net' 
   },
   password: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    default: 'aaaa'
   },
   firstName: String,
   lastName: String,
@@ -24,12 +26,14 @@ const userSchema = new Schema({
   onType: {
     type: String,
     enum: ['supplier', 'buyer', 'admin'],
-    required: true
+    required: true,
+    default: 'buyer'
+
   }, 
   provider: {
     type: String,
     required: true,
-    default: 'local'
+    default: 'local',
   },
   oauth2: String,
   posts_host: [{
